@@ -3,24 +3,9 @@ const { Client } = require('discord.js');
 const client = new Client();
 const StateManager = require('./utils/StateManager');
 
-StateManager.on('onGuildReady', h => {
-  console.log(h)
-  StateManager.emit('YO','hey');
-});
 let connection;
 const { registerCommands, registerEvents } = require('./utils/register');
 const guildCommandPrefixes = new Map();
-
-client.on('ready', () => {
-  console.log(`${client.user.tag} logged in.`);
-  client.guilds.cache.forEach(guild => {
-    connection.query(
-      `SELECT cmdPrefix FROM GuildConfigurable WHERE guildId = '${guild.id}'`
-    ).then(result => {
-      guildCommandPrefixes.set(guild.id, result[0][0].cmdPrefix);
-    }).catch(err => console.log(err));
-  });
-});
 
 client.on('guildCreate', async (guild) => {
   try {
@@ -66,6 +51,7 @@ client.on('message', async (message) => {
 (async () => {
   connection = await require('../database/db');
   await client.login(process.env.BOT_TOKEN);
+  StateManager.emit('onGuildReady', connection);
   client.commands = new Map();
   await registerCommands(client, '../commands');
   await registerEvents(client, '../events');
