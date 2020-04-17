@@ -29,7 +29,7 @@ async function registerEvents(client, dir = '') {
       const Event = require(path.join(filePath, file));
       if (Event.prototype instanceof BaseEvent) {
         const event = new Event();
-        client.on(event.name, event.run.bind(null, client));
+        client.on(event.name, event.run.bind(event, client));
       }
     }
   }
