@@ -5,7 +5,7 @@ module.exports = class PlayCommand extends BaseCommand {
     super('play', 'music', []);
   }
 
-  run () {
-    console.log(this.nane + ' was invoked');
+  run (client, message, args) {
+    console.log(this.name + ' was invoked');
   }
 }

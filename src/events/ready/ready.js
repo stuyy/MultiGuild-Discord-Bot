@@ -14,9 +14,11 @@ module.exports = class ReadyEvent extends BaseEvent {
       this.connection.query(
         `SELECT cmdPrefix FROM GuildConfigurable WHERE guildId = '${guild.id}'`
       ).then(result => {
-        guildCommandPrefixes.set(guild.id, result[0][0].cmdPrefix);
+        const guildId = guild.id;
+        const prefix = result[0][0].cmdPrefix;
+        guildCommandPrefixes.set(guildId, prefix);
+        StateManager.emit('prefixFetched', guildId, prefix);
       }).catch(err => console.log(err));
     });
   }
 }
-

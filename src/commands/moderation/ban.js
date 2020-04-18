@@ -5,7 +5,7 @@ module.exports = class BanCommand extends BaseCommand {
     super('ban', 'moderation', []);
   }
 
-  run () {
-    console.log(this.nane + ' was invoked');
+  run (client, message, args) {
+    console.log(this.name + ' was invoked');
   }
 }

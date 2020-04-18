@@ -5,7 +5,7 @@ module.exports = class InfoCommand extends BaseCommand {
     super('info', 'moderation', []);
   }
 
-  run () {
+  run (client, message, args) {
     console.log(this.name + ' was invoked');
   }
 }
