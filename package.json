@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/bot.js",
+    "lavalink": "java -jar Lavalink.jar",
     "start": "node ./src/bot.js"
   },
   "keywords": [],
@@ -14,6 +15,7 @@
   "dependencies": {
     "discord.js": "^12.1.1",
     "dotenv": "^8.2.0",
+    "erela.js": "^1.1.7",
     "mysql2": "^2.1.0"
   }
 }
