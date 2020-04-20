@@ -14,8 +14,8 @@ CREATE TABLE GuildConfigurable (
 CREATE TABLE GuildMemberExperience (
   guildId VARCHAR(100) NOT NULL,
   memberId VARCHAR(100) NOT NULL,
-  currentLevel SMALLINT NOT NULL DEFAULT 0,
-  experiencePoints INT NOT NULL DEFAULT 0,
+  currentLevel SMALLINT NOT NULL DEFAULT 1,
+  experiencePoints INT NOT NULL DEFAULT 1,
   PRIMARY KEY (guildId, memberId)
 );
 

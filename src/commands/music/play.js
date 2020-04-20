@@ -31,8 +31,7 @@ module.exports = class PlayCommand extends BaseCommand {
 
         if (response) {
           const entry = response.first().content;
-          console.log(entry);
-          const player = client.musicPlayers.get(message.guild.id);
+          const player = client.music.players.get(message.guild.id);
           const track = tracks[entry-1];
           player.queue.add(track);
           message.channel.send(`Enqueueing track ${track.title}`);

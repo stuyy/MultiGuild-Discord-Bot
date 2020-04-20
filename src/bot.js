@@ -19,7 +19,6 @@ const {
       password: process.env.PASSWORD
     }
   ]);
-  client.musicPlayers = new Map();
   client.commands = new Map();
   await registerMusicEvents(client.music, '../musicevents');
   await registerCommands(client, '../commands');

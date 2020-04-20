@@ -7,15 +7,23 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/bot.js",
     "lavalink": "java -jar Lavalink.jar",
-    "start": "node ./src/bot.js"
+    "start": "node ./src/bot.js",
+    "dev:server": "nodemon ./api/app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "discord.js": "^12.1.1",
     "dotenv": "^8.2.0",
     "erela.js": "^1.1.7",
-    "mysql2": "^2.1.0"
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-session-sequelize": "^2.2.0",
+    "mysql2": "^2.1.0",
+    "passport": "^0.4.1",
+    "passport-discord": "^0.1.3",
+    "sequelize": "^5.21.6"
   }
 }
