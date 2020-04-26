@@ -18,14 +18,13 @@ module.exports = class SearchCommand extends BaseCommand {
         const searchResults = await client.music.search(query, message.author);
         const tracks = searchResults.tracks.slice(0, 10);
         let i = 0;
-        const tracksInfo = tracks.map(track => `${++i}) ${track.title} - ${track.uri}`);
+        const tracksInfo = tracks.map(track => `${++i}) [${track.title}](${track.uri})`);
         const embed = new MessageEmbed()
           .setAuthor(client.user.tag, client.user.displayAvatarURL())
           .setDescription(tracksInfo)
           .setFooter('Music Results');
         
         message.channel.send(embed);
-
         const filter = m => (m.author.id === message.author.id)
           && (channel.id === player.voiceChannel.id)
           && ((m.content >= 1 && m.content <= tracks.length) || constants.includes(m.content.toLowerCase()));
@@ -34,7 +33,7 @@ module.exports = class SearchCommand extends BaseCommand {
         const tracksToQueue = await handleCollector(collector, tracks);
 
         i = 0;
-        const selectedTracksInfo = tracksToQueue.map(track => `${++i}) ${track.title} - ${track.uri}`);
+        const selectedTracksInfo = tracksToQueue.map(track => `${++i}) [${track.title}](${track.uri})`);
         const selectedTracksEmbed = new MessageEmbed()
           .setAuthor(client.user.tag, client.user.displayAvatarURL())
           .setDescription(selectedTracksInfo);
