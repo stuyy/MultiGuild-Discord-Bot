@@ -29,6 +29,7 @@ module.exports = class SkipCommand extends BaseCommand {
             await msg.react('👍');
             await msg.react('👎');
 
+
             const filter = (reaction, user) => {
               if (user.bot) return false;
               const { channel } = message.guild.members.cache.get(user.id).voice;
