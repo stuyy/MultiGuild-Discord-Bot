@@ -21,6 +21,7 @@ module.exports = class MessageEvent extends BaseEvent {
         command.run(client, message, cmdArgs);
       }
     }
+    
   }
 }
 
